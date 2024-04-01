@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">مخرج</string>
+    <string name="home">الرئيسية</string>
+    <string name="settings">الاعدادات</string>
+    <string name="index">الفهرس</string>
+    <string name="size_small">صغير</string>
+    <string name="size_normal">عادى</string>
+    <string name="size_large">كبير</string>
+    <string name="font_size_setting">حجم الخط</string>
+    <string name="dark_mode">وضع ليلي</string>
+    <string name="Language_switcher">تغيير اللغة</string>
+    <string name="recording_end">انتهى التسجيل</string>
+    <string name="request_permission">الرجاء السماح بتسجيل الصوت</string>
+    <string name="button_apply">تطبيق</string>
+    <string name="edit_text_size_title">تغيير حجم الخط</string>
+    <string name="alfateha">الفاتحة</string>
+    <string name="alsaafat">الصافات</string>
+    <string name="alkamer">القمر</string>
+    <string name="alrahman">الرحمن</string>
+    <string name="alwaqiha">الواقعة</string>
+</resources>

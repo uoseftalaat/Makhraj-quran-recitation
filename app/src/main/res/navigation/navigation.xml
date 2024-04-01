@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/suraViewerFragment">
+    <fragment
+        android:id="@+id/suraViewerFragment"
+        android:name="com.example.quranapplication.ui.fragment.SuraViewerFragment"
+        android:label="fragment_sura_viewer"
+        tools:layout="@layout/fragment_sura_viewer" >
+        <action
+            android:id="@+id/action_suraViewerFragment_to_indexFragment"
+            app:destination="@id/indexFragment" />
+        <action
+            android:id="@+id/action_suraViewerFragment_to_settingFragment"
+            app:destination="@id/settingFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/indexFragment"
+        android:name="com.example.quranapplication.ui.fragment.IndexFragment"
+        android:label="fragment_index"
+        tools:layout="@layout/fragment_index" >
+        <action
+            android:id="@+id/action_indexFragment_to_suraViewerFragment"
+            app:destination="@id/suraViewerFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/settingFragment"
+        android:name="com.example.quranapplication.ui.fragment.SettingFragment"
+        android:label="fragment_setting"
+        tools:layout="@layout/fragment_setting" >
+        <action
+            android:id="@+id/action_settingFragment_to_suraViewerFragment"
+            app:destination="@id/suraViewerFragment" />
+    </fragment>
+</navigation>

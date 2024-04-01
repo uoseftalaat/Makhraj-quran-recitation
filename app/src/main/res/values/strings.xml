@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">Makhrag</string>
+    <string name="home">Home</string>
+    <string name="settings">Settings</string>
+    <string name="index">Indexing</string>
+    <string name="size_small">Small</string>
+    <string name="size_normal">Normal</string>
+    <string name="size_large">Large</string>
+    <string name="font_size_setting">Font Size</string>
+    <string name="dark_mode">Dark Mode</string>
+    <string name="Language_switcher">Change language</string>
+    <string name="recording_end">Recording Ended</string>
+    <string name="request_permission">please allow the recording permission</string>
+    <string name="button_apply">apply</string>
+    <string name="edit_text_size_title">edit text size</string>
+    <string name="alfateha">al-Fātiḥah</string>
+    <string name="alsaafat">aṣ-Ṣāffāt</string>
+    <string name="alkamer">al-Qamar</string>
+    <string name="alrahman">ar-Raḥmān</string>
+    <string name="alwaqiha">al-Wāqiʿah</string>
+</resources>

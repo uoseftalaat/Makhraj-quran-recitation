@@ -1,0 +1,16 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.QuranApplication" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorButtonNormal">@color/babyblue</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="Theme.App.starting" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">@color/babyblue</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/splash_screen</item>
+        <item name="windowSplashScreenAnimationDuration">3000</item>
+        <item name="postSplashScreenTheme">@style/Base.Theme.QuranApplication</item>
+    </style>
+
+
+</resources>
