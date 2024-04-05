@@ -13,9 +13,4 @@
     <string name="request_permission">الرجاء السماح بتسجيل الصوت</string>
     <string name="button_apply">تطبيق</string>
     <string name="edit_text_size_title">تغيير حجم الخط</string>
-    <string name="alfateha">الفاتحة</string>
-    <string name="alsaafat">الصافات</string>
-    <string name="alkamer">القمر</string>
-    <string name="alrahman">الرحمن</string>
-    <string name="alwaqiha">الواقعة</string>
 </resources>

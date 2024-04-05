@@ -8,6 +8,7 @@ import android.media.AudioFormat.CHANNEL_CONFIGURATION_MONO
 import android.media.AudioRecord
 import android.media.MediaRecorder
 import androidx.core.app.ActivityCompat
+import com.example.quranapplication.network.SocketManager
 import com.example.quranproject.recorder.QAudioRecorder
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -27,11 +28,9 @@ class AndroidAudioRecorder(
     private var isRecording = true
     private val channelConfig = CHANNEL_CONFIGURATION_MONO
     private val audioFormat = AudioFormat.ENCODING_PCM_16BIT
-    private var minBufferSize = AudioRecord.getMinBufferSize(sampleRate, channelConfig, audioFormat) * 4
+    private var minBufferSize = AudioRecord.getMinBufferSize(sampleRate, channelConfig, audioFormat) * 10
     private var audioRecord:AudioRecord? = null
-    var recordingThread:Thread? = null
-    var outputStream:DataOutputStream? = null
-    val socket:Socket? = null
+    val socketManager = SocketManager()
 
      fun buildRecorder(){
          if (ActivityCompat.checkSelfPermission(
@@ -41,46 +40,25 @@ class AndroidAudioRecorder(
          ) {
              audioRecord = AudioRecord(MediaRecorder.AudioSource.MIC,sampleRate,channelConfig,audioFormat,minBufferSize)
          }
-
+        socketManager.buildSocket()
     }
 
     override fun startRecording(outputFile: File) {
-        try {
-            audioRecord!!.startRecording()
-            isRecording = true
-
-            // Establish socket connection asynchronously
-            GlobalScope.launch(Dispatchers.IO) {
-                val socket = Socket("16.170.236.127", 8080)
-                val outputStream = DataOutputStream(socket.getOutputStream())
-
-                // Start recording and streaming audio data
-                val buffer = ByteArray(minBufferSize)
-                while (isRecording) {
-                    val bytesRead = audioRecord!!.read(buffer, 0, buffer.size)
-                    outputStream.write(buffer, 0, bytesRead)
-                }
-
-                // Close output stream and socket when recording stops
-                outputStream.close()
-                socket.close()
-            }
-        } catch (e: Exception) {
-            e.printStackTrace()
+        audioRecord!!.startRecording()
+        isRecording = true
+        val buffer = ByteArray(minBufferSize)
+        while (isRecording) {
+            val bytesRead = audioRecord!!.read(buffer, 0, buffer.size)
+            socketManager.sendData(buffer,bytesRead)
+            socketManager.receiveDataFromSocket()
         }
+        socketManager.close()
     }
 
     override fun stopRecording() {
-        try {
-            isRecording = false
-            recordingThread?.join()
-            outputStream?.close()
-            socket?.close()
-            audioRecord?.stop()
-            audioRecord?.release()
-        } catch (e: Exception) {
-            e.printStackTrace()
-        }
+        isRecording = false
+        audioRecord?.stop()
+        audioRecord?.release()
     }
 
 }

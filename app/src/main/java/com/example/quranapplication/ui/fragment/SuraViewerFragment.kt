@@ -14,6 +14,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import com.example.quranapplication.R
 import com.example.quranapplication.databinding.FragmentSuraViewerBinding
+import com.example.quranapplication.network.SocketManager
 import com.example.quranapplication.ui.viewmodel.MainViewModel
 import com.example.quranapplication.recorder.AndroidAudioRecorder
 import java.io.File
@@ -25,6 +26,7 @@ class SuraViewerFragment : Fragment() {
     private val viewModel: MainViewModel by viewModels()
     lateinit var audioRecorder: AndroidAudioRecorder
     private var isRecording = false
+    val socketManager = SocketManager()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

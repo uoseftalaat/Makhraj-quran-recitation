@@ -13,9 +13,12 @@
     <string name="request_permission">please allow the recording permission</string>
     <string name="button_apply">apply</string>
     <string name="edit_text_size_title">edit text size</string>
-    <string name="alfateha">al-Fātiḥah</string>
-    <string name="alsaafat">aṣ-Ṣāffāt</string>
-    <string name="alkamer">al-Qamar</string>
-    <string name="alrahman">ar-Raḥmān</string>
-    <string name="alwaqiha">al-Wāqiʿah</string>
+    <string name="alfateha" translatable="false">الفاتحة</string>
+    <string name="alsaafat" translatable="false">الصافات</string>
+    <string name="alkamer" translatable="false">القمر</string>
+    <string name="alrahman" translatable="false">الرحمن</string>
+    <string name="alwaqiha" translatable="false">الواقعة</string>
+    <string name="alsho3raa" translatable="false">الشعراء</string>
+    <string name="alzariat" translatable="false">الذاريات</string>
+    <string name="alnagm" translatable="false">النجم</string>
 </resources>

@@ -23,14 +23,20 @@ class IndexFragment : Fragment() {
     ): View {
         binding = FragmentIndexBinding.inflate(inflater,container,false)
         val suraToview = mutableListOf(
+            Sura(resources.getString(R.string.alsho3raa),26,Source.Makki),
             Sura(resources.getString(R.string.alsaafat),37,Source.Makki),
+            Sura(resources.getString(R.string.alzariat),51,Source.Makki),
+            Sura(resources.getString(R.string.alnagm),53,Source.Makki),
             Sura(resources.getString(R.string.alkamer),54,Source.Makki),
             Sura(resources.getString(R.string.alrahman),55,Source.Madani),
             Sura(resources.getString(R.string.alwaqiha),56,Source.Makki)
         )
         val adap= IndexAdapter(suraToview) { sura ->
             MainViewModel.sura.value = when (sura.number) {
+                26 -> SpannableString( Constant.alsho3raa)
                 37 -> SpannableString( Constant.alsafat)
+                51 -> SpannableString( Constant.alzariat)
+                53 -> SpannableString( Constant.alnagm)
                 54 -> SpannableString( Constant.alkamer)
                 55 -> SpannableString( Constant.alrahman)
                 56 -> SpannableString( Constant.alwaq3a)
