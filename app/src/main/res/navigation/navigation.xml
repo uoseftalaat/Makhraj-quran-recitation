@@ -15,6 +15,9 @@
         <action
             android:id="@+id/action_suraViewerFragment_to_settingFragment"
             app:destination="@id/settingFragment" />
+        <action
+            android:id="@+id/action_suraViewerFragment_to_recordingHandlerFragment"
+            app:destination="@id/recordingHandlerFragment" />
     </fragment>
     <fragment
         android:id="@+id/indexFragment"
@@ -32,6 +35,14 @@
         tools:layout="@layout/fragment_setting" >
         <action
             android:id="@+id/action_settingFragment_to_suraViewerFragment"
+            app:destination="@id/suraViewerFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/recordingHandlerFragment"
+        android:name="com.example.quranapplication.ui.fragment.RecordingHandlerFragment"
+        android:label="RecordingHandlerFragment" >
+        <action
+            android:id="@+id/action_recordingHandlerFragment_to_suraViewerFragment"
             app:destination="@id/suraViewerFragment" />
     </fragment>
 </navigation>

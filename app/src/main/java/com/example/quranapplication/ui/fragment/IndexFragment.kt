@@ -22,32 +22,52 @@ class IndexFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentIndexBinding.inflate(inflater,container,false)
-        val suraToview = mutableListOf(
-            Sura(resources.getString(R.string.alsho3raa),26,Source.Makki),
-            Sura(resources.getString(R.string.alsaafat),37,Source.Makki),
-            Sura(resources.getString(R.string.alzariat),51,Source.Makki),
-            Sura(resources.getString(R.string.alnagm),53,Source.Makki),
-            Sura(resources.getString(R.string.alkamer),54,Source.Makki),
-            Sura(resources.getString(R.string.alrahman),55,Source.Madani),
-            Sura(resources.getString(R.string.alwaqiha),56,Source.Makki)
+        val suraToView = mutableListOf(
+            Sura(resources.getString(R.string.alsho3raa),26,Source.Makki,0),
+            Sura(resources.getString(R.string.alsaafat),37,Source.Makki,10),
+            Sura(resources.getString(R.string.alzariat),51,Source.Makki,17),
+            Sura(resources.getString(R.string.altor),52,Source.Makki,20),
+            Sura(resources.getString(R.string.alnagm),53,Source.Makki,23),
+            Sura(resources.getString(R.string.alkamer),54,Source.Makki,25),
+            Sura(resources.getString(R.string.alrahman),55,Source.Madani,28),
+            Sura(resources.getString(R.string.alwaqiha),56,Source.Makki,31)
         )
-        val adap= IndexAdapter(suraToview) { sura ->
-            MainViewModel.sura.value = when (sura.number) {
-                26 -> SpannableString( Constant.alsho3raa)
-                37 -> SpannableString( Constant.alsafat)
-                51 -> SpannableString( Constant.alzariat)
-                53 -> SpannableString( Constant.alnagm)
-                54 -> SpannableString( Constant.alkamer)
-                55 -> SpannableString( Constant.alrahman)
-                56 -> SpannableString( Constant.alwaq3a)
-                else -> SpannableString( Constant.alfateha)
+        val adap= IndexAdapter(suraToView) { sura ->
+            MainViewModel.chosenSura = when (sura.number) {
+                26 -> {
+                    suraToView[0].startingPage
+                }
+                37 -> {
+                    suraToView[1].startingPage
+                }
+                51 -> {
+                    suraToView[2].startingPage
+                }
+                52 -> {
+                    suraToView[3].startingPage
+                }
+                53 -> {
+                    suraToView[4].startingPage
+                }
+                54 -> {
+                    suraToView[5].startingPage
+                }
+                55 -> {
+                    suraToView[6].startingPage
+                }
+                56 -> {
+                    suraToView[7].startingPage
+                }
+                else -> {
+                    suraToView[8].startingPage
+                }
             }
+            activity?.supportFragmentManager?.beginTransaction()?.replace(R.id.fragmentContainerView,SuraViewerFragment())?.commit()
         }
         binding.indexrecyclerView.apply {
             adapter = adap
             layoutManager = LinearLayoutManager(requireContext())
         }
-
         return binding.root
     }
 }

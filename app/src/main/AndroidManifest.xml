@@ -15,7 +15,8 @@
         android:theme="@style/Base.Theme.QuranApplication"
         tools:targetApi="31"
         android:name=".QuranApplication"
-        android:usesCleartextTraffic="true">
+        android:usesCleartextTraffic="true"
+        android:enableOnBackInvokedCallback="true">
         <activity
             android:name=".ui.MainActivity"
             android:exported="true"

@@ -23,37 +23,34 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
 
-    <TextView
-        android:id="@+id/ayat"
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/pageViewer"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:fontFamily="@font/hafsfont"
         android:scrollbars="vertical"
+        android:layoutDirection="rtl"
         android:scrollbarStyle="outsideInset"
-        android:layout_marginHorizontal="10dp"
-        android:padding="10dp"
         android:textAlignment="center"
-        android:text="@{}"
-        android:textSize="@{viewModel.Companion.textSize}"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView"
         app:layout_constraintVertical_bias="0.0" />
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/record"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="end|bottom"
-        android:layout_marginBottom="16dp"
-        android:contentDescription="recorder"
-        android:src="@drawable/microphone"
-        app:layout_constraintBottom_toBottomOf="@+id/ayat"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.947"
-        app:layout_constraintStart_toStartOf="parent"
-        android:visibility="invisible"
-        tools:ignore="MissingConstraints" />
+<!--    <com.google.android.material.floatingactionbutton.FloatingActionButton-->
+<!--        android:id="@+id/record"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_gravity="end|bottom"-->
+<!--        android:layout_marginBottom="16dp"-->
+<!--        android:contentDescription="recorder"-->
+<!--        android:src="@drawable/microphone"-->
+<!--        app:layout_constraintBottom_toBottomOf="@id/pageViewer"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="0.947"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        android:visibility="invisible"-->
+<!--        tools:ignore="MissingConstraints" />-->
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/recitemodebt"

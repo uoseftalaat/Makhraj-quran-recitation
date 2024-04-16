@@ -13,4 +13,5 @@
     <string name="request_permission">الرجاء السماح بتسجيل الصوت</string>
     <string name="button_apply">تطبيق</string>
     <string name="edit_text_size_title">تغيير حجم الخط</string>
+    <string name="mic_stoping">جارى الايقاف</string>
 </resources>

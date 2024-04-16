@@ -10,7 +10,7 @@ class MainViewModel:ViewModel() {
     companion object {
 
         val sura: MutableLiveData<SpannableString> by lazy {
-            MutableLiveData<SpannableString>(SpannableString(Constant.alfateha))
+            MutableLiveData<SpannableString>(SpannableString(""))
         }
 
         val visibilityState: MutableLiveData<Int> by lazy {
@@ -18,7 +18,9 @@ class MainViewModel:ViewModel() {
         }
 
         val textSize:MutableLiveData<Float> by lazy {
-            MutableLiveData<Float>(70f)
+            MutableLiveData<Float>(80f)
         }
+
+        var chosenSura:Int = 0
     }
 }

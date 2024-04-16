@@ -74,7 +74,7 @@ class SettingFragment : Fragment() {
             MainViewModel.textSize.value = 50f
         }
         binding.textsizeNormal.setOnClickListener{
-            MainViewModel.textSize.value= 90f
+            MainViewModel.textSize.value= 80f
         }
         binding.textsizeLarge.setOnClickListener{
             MainViewModel.textSize.value = 140f

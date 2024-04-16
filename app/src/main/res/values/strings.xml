@@ -21,4 +21,6 @@
     <string name="alsho3raa" translatable="false">الشعراء</string>
     <string name="alzariat" translatable="false">الذاريات</string>
     <string name="alnagm" translatable="false">النجم</string>
+    <string name="altor" translatable="false">الطور</string>
+    <string name="mic_stoping">stoping</string>
 </resources>

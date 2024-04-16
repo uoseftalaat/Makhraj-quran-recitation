@@ -21,7 +21,7 @@ import com.example.quranapplication.ui.viewmodel.MainViewModel
 
 
 class MainActivity : AppCompatActivity() {
-    lateinit var binding:ActivityMainBinding
+    private lateinit var binding:ActivityMainBinding
     val viewModel:MainViewModel by viewModels()
     override fun onCreate(savedInstanceState: Bundle?) {
         installSplashScreen()
@@ -51,7 +51,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    fun makeCurrentFragment(fragment:Fragment){
+    private fun makeCurrentFragment(fragment:Fragment){
         supportFragmentManager.beginTransaction().apply {
             replace(R.id.fragmentContainerView,fragment)
             commit()
@@ -59,14 +59,14 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun navigation(){
-        val homefragment = SuraViewerFragment()
-        val settingfragment = SettingFragment()
+        val homeFragment = SuraViewerFragment()
+        val settingFragment = SettingFragment()
         val indexFragment = IndexFragment()
         binding.bottomNavigationView.setOnNavigationItemSelectedListener {
             when(it.itemId){
-                R.id.homebt -> makeCurrentFragment(homefragment)
+                R.id.homebt -> makeCurrentFragment(homeFragment)
                 R.id.indexbt -> makeCurrentFragment(indexFragment)
-                R.id.settingbt -> makeCurrentFragment(settingfragment)
+                R.id.settingbt -> makeCurrentFragment(settingFragment)
             }
             true
         }
