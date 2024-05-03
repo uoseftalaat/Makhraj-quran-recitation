@@ -33,29 +33,37 @@ class IndexFragment : Fragment() {
             Sura(resources.getString(R.string.alwaqiha),56,Source.Makki,31)
         )
         val adap= IndexAdapter(suraToView) { sura ->
-            MainViewModel.chosenSura = when (sura.number) {
+            MainViewModel.chosenPage = when (sura.number) {
                 26 -> {
+                    MainViewModel.chosenSura = Constant.alsho3raa
                     suraToView[0].startingPage
                 }
                 37 -> {
+                    MainViewModel.chosenSura = Constant.alsafat
                     suraToView[1].startingPage
                 }
                 51 -> {
+                    MainViewModel.chosenSura = Constant.alzariat
                     suraToView[2].startingPage
                 }
                 52 -> {
+                    MainViewModel.chosenSura = Constant.altor
                     suraToView[3].startingPage
                 }
                 53 -> {
+                    MainViewModel.chosenSura = Constant.alnagm
                     suraToView[4].startingPage
                 }
                 54 -> {
+                    MainViewModel.chosenSura = Constant.alkamer
                     suraToView[5].startingPage
                 }
                 55 -> {
+                    MainViewModel.chosenSura = Constant.alrahman
                     suraToView[6].startingPage
                 }
                 56 -> {
+                    MainViewModel.chosenSura = Constant.alwaq3a
                     suraToView[7].startingPage
                 }
                 else -> {

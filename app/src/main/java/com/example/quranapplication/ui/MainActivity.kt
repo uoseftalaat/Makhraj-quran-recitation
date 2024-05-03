@@ -18,6 +18,12 @@ import com.example.quranapplication.ui.fragment.IndexFragment
 import com.example.quranapplication.ui.fragment.SettingFragment
 import com.example.quranapplication.ui.fragment.SuraViewerFragment
 import com.example.quranapplication.ui.viewmodel.MainViewModel
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.coroutineScope
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 
 class MainActivity : AppCompatActivity() {

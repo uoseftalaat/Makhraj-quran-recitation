@@ -12,6 +12,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import com.example.quranapplication.R
 import com.example.quranapplication.databinding.FragmentRecordingHandlerBinding
+import com.example.quranapplication.other.Constant
 import com.example.quranapplication.recorder.AndroidAudioRecorder
 import com.example.quranapplication.ui.viewmodel.MainViewModel
 import java.io.File
@@ -61,7 +62,7 @@ class RecordingHandlerFragment : Fragment() {
                 if(checkRecordingPermission()) {
                     isRecording = true
                     file.apply {
-                        audioRecorder.buildRecorder()
+                        audioRecorder.buildRecorder(MainViewModel.chosenSura)
                         audioRecorder.startRecording(this)
                     }
                 }

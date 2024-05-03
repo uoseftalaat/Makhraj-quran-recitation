@@ -3,6 +3,7 @@ package com.example.quranapplication.network
 import android.util.Log
 import com.example.quranapplication.other.Constant.HOST
 import com.example.quranapplication.other.Constant.PORT
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -18,22 +19,31 @@ class SocketManager {
     private var socket :Socket?= null
     private var outputStream :DataOutputStream? = null
     private var inputStream:InputStream? = null
+    private var isClosed = false
 
     fun buildSocket() = Thread{
-            socket = Socket(HOST, PORT)
+        socket = Socket(HOST, PORT)
     }.start()
+
 
     fun startSocket(buffer: ByteArray, bytesRead: Int,callback: (String?) -> Unit) {
         try {
-            GlobalScope.launch(Dispatchers.IO) {
-                outputStream = DataOutputStream(socket?.getOutputStream())
-                outputStream?.write(buffer, 0, bytesRead)
-                // Check if there is data available in the input stream
-                inputStream = socket?.getInputStream()
-                if (inputStream?.available()!! > 0) {
-                    val br = BufferedReader(InputStreamReader(inputStream))
-                    val res = br.readLine()
-                    callback(res)
+            CoroutineScope(Dispatchers.IO).launch {
+                if(!isClosed) {
+                    outputStream = DataOutputStream(socket?.getOutputStream())
+                    outputStream?.write(buffer, 0, bytesRead)
+                    inputStream = socket?.getInputStream()
+                    if (inputStream?.available()!! > 0) {
+                        val br = BufferedReader(InputStreamReader(inputStream))
+                        val res = br.readLine()
+                        if (res == "?????"){
+                            inputStream?.close()
+                            socket?.close()
+                            isClosed = true
+                            outputStream?.close()
+                        }
+                        callback(res)
+                    }
                 }
             }
         } catch (e: Exception) {
@@ -47,6 +57,7 @@ class SocketManager {
 
     fun close(){
         socket?.close()
+        isClosed = true
         outputStream?.close()
     }
 }

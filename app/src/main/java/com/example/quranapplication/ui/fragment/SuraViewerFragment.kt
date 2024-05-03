@@ -1,6 +1,7 @@
 package com.example.quranapplication.ui.fragment
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,6 +11,7 @@ import com.example.quranapplication.databinding.FragmentSuraViewerBinding
 import com.example.quranapplication.other.Constant
 import com.example.quranapplication.ui.viewmodel.MainViewModel
 import com.example.quranapplication.ui.recyclerview.ViewAdapter
+import kotlin.math.log
 
 
 class SuraViewerFragment : Fragment() {
@@ -42,11 +44,12 @@ class SuraViewerFragment : Fragment() {
         binding.pageViewer.apply {
             adapter = adap
         }
-        binding.pageViewer.currentItem = MainViewModel.chosenSura
+        binding.pageViewer.currentItem = MainViewModel.chosenPage
+
     }
     private fun setReciteMode(){
         binding.recitemodebt.setOnClickListener{
-            MainViewModel.chosenSura = binding.pageViewer.currentItem
+            MainViewModel.chosenPage = binding.pageViewer.currentItem
             activity?.supportFragmentManager?.beginTransaction()?.replace(R.id.fragmentContainerView,RecordingHandlerFragment())?.commit()
         }
     }

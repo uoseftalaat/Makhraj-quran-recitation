@@ -3,9 +3,18 @@ package com.example.quranapplication.ui.viewmodel
 import android.text.SpannableString
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.example.quranapplication.other.Constant
+import kotlinx.coroutines.launch
 
 class MainViewModel:ViewModel() {
+
+
+    fun run(){
+        viewModelScope.launch{
+
+        }
+    }
 
     companion object {
 
@@ -21,6 +30,8 @@ class MainViewModel:ViewModel() {
             MutableLiveData<Float>(80f)
         }
 
-        var chosenSura:Int = 0
+        var chosenSura:String = Constant.alrahman
+
+        var chosenPage:Int = 0
     }
 }
