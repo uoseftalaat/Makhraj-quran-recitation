@@ -1,6 +1,7 @@
 package com.example.quranapplication.ui.fragment
 
 import android.os.Bundle
+import android.text.SpannableString
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -50,6 +51,7 @@ class SuraViewerFragment : Fragment() {
     private fun setReciteMode(){
         binding.recitemodebt.setOnClickListener{
             MainViewModel.chosenPage = binding.pageViewer.currentItem
+            MainViewModel.sura.value = SpannableString("")
             activity?.supportFragmentManager?.beginTransaction()?.replace(R.id.fragmentContainerView,RecordingHandlerFragment())?.commit()
         }
     }

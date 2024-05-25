@@ -8,6 +8,9 @@ import android.media.AudioFormat
 import android.media.AudioFormat.CHANNEL_CONFIGURATION_MONO
 import android.media.AudioRecord
 import android.media.MediaRecorder
+import android.os.Build
+import android.os.VibrationEffect
+import android.os.Vibrator
 import android.text.Spannable
 import android.text.SpannableString
 import android.text.SpannableStringBuilder
@@ -17,6 +20,7 @@ import android.text.style.ForegroundColorSpan
 import android.util.Log
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat.getSystemService
 import com.example.quranapplication.matchingalgo.MatchingAlgorithm
 import com.example.quranapplication.network.SocketManager
 import com.example.quranapplication.other.Constant
@@ -44,7 +48,7 @@ class AndroidAudioRecorder(
              ) == PackageManager.PERMISSION_GRANTED
          ) {
              audioRecord = AudioRecord(MediaRecorder.AudioSource.MIC,sampleRate,channelConfig,audioFormat,minBufferSize)
-            matching = MatchingAlgorithm(Sura)
+            matching = MatchingAlgorithm(Sura,context)
          }
         socketManager.buildSocket()
     }
@@ -89,6 +93,7 @@ class AndroidAudioRecorder(
         isRecording = false
         audioRecord?.stop()
         audioRecord?.release()
+        socketManager.close()
     }
 
 

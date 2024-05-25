@@ -56,8 +56,10 @@ class SocketManager {
 
 
     fun close(){
+        inputStream?.close()
+        outputStream?.close()
         socket?.close()
         isClosed = true
-        outputStream?.close()
+        
     }
 }

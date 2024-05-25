@@ -74,6 +74,11 @@ class RecordingHandlerFragment : Fragment() {
         }
     }
 
+    override fun onPause() {
+        super.onPause()
+        audioRecorder.stopRecording()
+    }
+
     private fun setReciteMode(){
         binding.returnmodebt.setOnClickListener{
             activity?.supportFragmentManager?.beginTransaction()?.replace(R.id.fragmentContainerView,SuraViewerFragment())?.commit()

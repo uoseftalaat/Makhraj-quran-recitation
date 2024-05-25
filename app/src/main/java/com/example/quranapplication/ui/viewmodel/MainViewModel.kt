@@ -8,14 +8,6 @@ import com.example.quranapplication.other.Constant
 import kotlinx.coroutines.launch
 
 class MainViewModel:ViewModel() {
-
-
-    fun run(){
-        viewModelScope.launch{
-
-        }
-    }
-
     companion object {
 
         val sura: MutableLiveData<SpannableString> by lazy {
