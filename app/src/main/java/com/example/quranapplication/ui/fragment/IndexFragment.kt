@@ -20,24 +20,24 @@ import com.example.quranapplication.ui.viewmodel.MainViewModel
 class IndexFragment : Fragment() {
     private lateinit var binding:FragmentIndexBinding
     private val viewModel:MainViewModel by activityViewModels()
-    val suraToView = mutableListOf(
-        Sura(resources.getString(R.string.alsho3raa),26,Source.Makki,0),
-        Sura(resources.getString(R.string.alsaafat),37,Source.Makki,10),
-        Sura(resources.getString(R.string.alzariat),51,Source.Makki,17),
-        Sura(resources.getString(R.string.altor),52,Source.Makki,20),
-        Sura(resources.getString(R.string.alnagm),53,Source.Makki,23),
-        Sura(resources.getString(R.string.alkamer),54,Source.Makki,25),
-        Sura(resources.getString(R.string.alrahman),55,Source.Madani,28),
-        Sura(resources.getString(R.string.alwaqiha),56,Source.Makki,31)
-    )
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentIndexBinding.inflate(inflater,container,false)
+        val suraToView = mutableListOf(
+            Sura(resources.getString(R.string.alsho3raa),26,Source.Makki,0),
+            Sura(resources.getString(R.string.alsaafat),37,Source.Makki,10),
+            Sura(resources.getString(R.string.alzariat),51,Source.Makki,17),
+            Sura(resources.getString(R.string.altor),52,Source.Makki,20),
+            Sura(resources.getString(R.string.alnagm),53,Source.Makki,23),
+            Sura(resources.getString(R.string.alkamer),54,Source.Makki,25),
+            Sura(resources.getString(R.string.alrahman),55,Source.Madani,28),
+            Sura(resources.getString(R.string.alwaqiha),56,Source.Makki,31)
+        )
         val adapter= IndexAdapter(suraToView) { sura ->
-            navigateToSura(sura)
+            navigateToSura(sura,suraToView)
         }
         binding.indexrecyclerView.apply {
             this.adapter = adapter
@@ -46,7 +46,7 @@ class IndexFragment : Fragment() {
         return binding.root
     }
 
-    fun navigateToSura(sura:Sura){
+    private fun navigateToSura(sura:Sura, suraToView: List<Sura>){
         viewModel.chosenPage = when (sura.number) {
             26 -> {
                 viewModel.chosenSura = Constant.alsho3raa
