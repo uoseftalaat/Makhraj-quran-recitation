@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import com.example.quranapplication.R
 import com.example.quranapplication.databinding.FragmentSuraViewerBinding
 import com.example.quranapplication.other.Constant
@@ -18,7 +19,7 @@ import kotlin.math.log
 class SuraViewerFragment : Fragment() {
 
     private lateinit var binding:FragmentSuraViewerBinding
-
+    private val viewModel:MainViewModel by activityViewModels()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -45,12 +46,12 @@ class SuraViewerFragment : Fragment() {
         binding.pageViewer.apply {
             adapter = adap
         }
-        binding.pageViewer.currentItem = MainViewModel.chosenPage
+        binding.pageViewer.currentItem = viewModel.chosenPage
 
     }
     private fun setReciteMode(){
         binding.recitemodebt.setOnClickListener{
-            MainViewModel.chosenPage = binding.pageViewer.currentItem
+            viewModel.chosenPage = binding.pageViewer.currentItem
             MainViewModel.sura.value = SpannableString("")
             activity?.supportFragmentManager?.beginTransaction()?.replace(R.id.fragmentContainerView,RecordingHandlerFragment())?.commit()
         }
